@@ -1,0 +1,207 @@
+.uiInput,
+body {
+  box-sizing: border-box;
+  font-family: "Cantarell", "Arial", "Helvetica", "sans-serif";
+  font-size: 11pt;
+}
+
+legend {
+  font-weight: bold;
+}
+
+textarea,
+input[type="text"],
+input[type="number"] {
+  border: 1px solid;
+}
+
+textarea:hover,
+input[type="text"]:hover,
+input[type="number"]:hover {
+  border: 1px solid #00f;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border: 1px solid #0bf;
+}
+
+.uiContainer {
+  display: grid;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.uiContainer.page {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  grid-template-rows: minmax(min-content, 10%) minmax(40%, 100%) minmax(
+      min-content,
+      10%
+    );
+  grid-template-columns: 100%;
+}
+
+.uiContainer.foot,
+.uiContainer.head {
+  overflow: visible;
+  grid-template-rows: minmax(min-content, 50%) minmax(min-content, 50%);
+  grid-template-columns: 100%;
+}
+
+.uiContainer.body {
+  overflow: hidden;
+  grid-template-rows: 100%;
+  grid-template-columns: minmax(min-content, 15%) minmax(30%, 100%) minmax(
+      min-content,
+      25%
+    );
+}
+
+.uiContainer.panel {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.uiContainer.panel.form {
+  overflow-y: scroll;
+}
+
+.uiContainer.panel.menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  list-style-type: none;
+  background-color: #ffffff;
+  border: 1px solid #bfbfbf;
+  padding: 4px;
+  text-indent: 1.5em;
+  min-width: 14em;
+}
+
+.uiContainer.input {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.uiContainer.input.menu {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 0;
+  padding: 2px 8px;
+}
+
+.uiContainer.input.menu:hover {
+  background-color: #bfbfff;
+}
+
+.uiContainer.input.menu:hover > .uiContainer.panel.menu {
+  display: block;
+}
+
+.uiContainer.input.menu.root > .uiContainer.panel.menu {
+  top: 100%;
+  left: 0;
+}
+
+.uiContainer.input.row {
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.uiContainer.input.full {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.uiContainer.row {
+  display: flex;
+  flex: auto;
+  flex-flow: row wrap;
+}
+
+.uiPanel {
+  display: block;
+}
+
+.uiPanel.bar {
+  display: flex;
+  flex-flow: row;
+  padding: 2px;
+}
+
+.uiPanel.bar.command {
+  justify-content: flex-end;
+}
+
+.uiPanel.form {
+  flex-flow: column wrap;
+  padding: 8px;
+}
+
+.uiPanel.list {
+  text-overflow: ellipsis;
+}
+
+.uiPanel.full {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.uiInput.number {
+  max-width: 7em;
+}
+
+.uiInput.textarea {
+  resize: vertical;
+}
+
+.uiInput.menu.arrow {
+  position: absolute;
+  right: 0;
+  font-size: 0.75em;
+  text-indent: 0;
+}
+.uiInput.textarea {
+  padding: 0.25em;
+}
+
+.uiInput.number {
+  padding-left: 0.25em;
+}
+
+.uiInput.full {
+  height: 100%;
+  width: 100%;
+}
+
+.uiInput.long {
+  width: 100%;
+}
+
+.uiInput.short {
+  width: 4em;
+}
+
+.uiInput.tall {
+  height: 100%;
+}
+
+#application-message {
+  overflow-y: auto;
+}
+
+#panel-object,
+#panel-slide {
+  min-height: 0;
+}

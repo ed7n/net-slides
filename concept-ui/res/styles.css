@@ -1,0 +1,662 @@
+* {
+  box-sizing: border-box;
+  color: var(--colorText);
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  /* non-standard */
+  -webkit-user-select: none;
+}
+
+.fieldset {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.fieldset > div:first-child {
+  padding-block-end: 1px;
+  padding-block-start: 1px;
+  padding-inline-end: 1px;
+  padding-inline-start: var(--fieldPadding);
+  /* blink
+  column-gap: 1px; */
+}
+
+.fieldset > div:first-child > :not(:first-child) {
+  /* blink */
+  margin-inline-start: 1px;
+}
+
+.fieldset > div:first-child > .button {
+  font-weight: normal;
+  padding-inline-end: var(--inputPadding);
+  padding-inline-start: var(--inputPadding);
+}
+
+.fieldset > :not(:first-child) {
+  flex: auto;
+  width: 100%;
+}
+
+.filled {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.separator.horizontal {
+  border-block-end: 1px solid #fff;
+  border-block-start: 1px solid #7f7f7f;
+  width: 100%;
+}
+
+.separator.vertical {
+  border-inline-end: 1px solid #fff;
+  border-inline-start: 1px solid #7f7f7f;
+  height: 100%;
+}
+
+body {
+  font-family: "Cantarell", "Arial", "Helvetica", "sans-serif";
+  font-size: 10pt;
+  --colorActive: #0fef0f;
+  --colorAnchor: #0f0fef;
+  --colorAnchorFocus: #0f7f0f;
+  --colorAnchorFocusBackground: #0fef0f7f;
+  --colorAnchorHover: #0f0fef;
+  --colorAnchorHoverBackground: #0f0fef7f;
+  --colorBackground: #efefef;
+  --colorBackgroundActive: #0fbf0f3f;
+  --colorBackgroundDent: #dfdfdf;
+  --colorBackgroundHover: #0f0fef3f;
+  --colorBackgroundInput: #fff;
+  --colorFocus: #0fbfef;
+  --colorFocusButton: #efbf0f;
+  --colorHover: #0f0fef;
+  --colorText: #0f0f0f;
+  --fieldLabelWidth: 6em;
+  --fieldPadding: 0.5em;
+  --inputPadding: 0.25em;
+  --inputRowMinWidth: 10em;
+  --inputShortMinWidth: 6em;
+  --lineHeight: 1.6em;
+}
+
+body.dark-mode {
+  --colorActive: #0fbf0f;
+  --colorAnchor: #7f7fef;
+  --colorAnchorFocus: #bfefbf;
+  --colorAnchorHover: #bfbfef;
+  --colorBackground: #0f0f0f;
+  --colorBackgroundDent: #1f1f1f;
+  --colorBackgroundInput: #000;
+  --colorFocus: #0f7fbf;
+  --colorHover: #0f0fef;
+  --colorText: #efefef;
+}
+
+a {
+  color: var(--colorAnchor);
+}
+
+a:hover {
+  background-color: var(--colorAnchorHoverBackground);
+  color: var(--colorAnchorHover);
+}
+
+a:focus {
+  background-color: var(--colorAnchorFocusBackground);
+  color: var(--colorAnchorFocus);
+}
+
+button,
+input,
+legend,
+select,
+textarea {
+  padding: var(--inputPadding);
+  resize: none;
+  user-select: unset;
+  /* non-standard */
+  -webkit-user-select: unset;
+}
+
+button,
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+select {
+  height: calc(3px + (var(--inputPadding) * 2) + var(--lineHeight));
+}
+
+button.row,
+input.row,
+select.row {
+  min-width: var(--inputRowMinWidth);
+  width: 100%;
+}
+
+button.short,
+input.short,
+select.short {
+  min-width: var(--inputShortMinWidth);
+  width: 100%;
+}
+
+button,
+select {
+  padding: 0;
+}
+
+button,
+.button,
+input[type="color"] {
+  background: var(--colorBackgroundDent);
+  border-block-end: 2px solid #3f3f3f;
+  border-block-start: 2px solid #fff;
+  border-inline-end: 2px solid #3f3f3f;
+  border-inline-start: 2px solid #fff;
+}
+
+button:hover,
+.button:hover,
+input[type="color"]:hover {
+  background-color: var(--colorBackgroundHover);
+}
+
+button:active,
+.button:active,
+input[type="color"]:active {
+  background-color: var(--colorBackgroundActive);
+  border-block-end: 2px solid #fff;
+  border-block-start: 2px solid #bfbfbf;
+  border-inline-end: 2px solid #fff;
+  border-inline-start: 2px solid #bfbfbf;
+}
+
+button:focus,
+.button:focus,
+input[type="color"]:focus {
+  outline: 1px solid var(--colorFocusButton);
+}
+
+input:not([type="color"]):not([type="file"]),
+select,
+textarea {
+  background-color: var(--colorBackgroundInput);
+  border-block-end: 1px solid #bfbfbf;
+  border-block-start: 2px solid #3f3f3f;
+  border-inline-end: 1px solid #bfbfbf;
+  border-inline-start: 2px solid #3f3f3f;
+}
+
+input:not([type="color"]):not([type="file"]):hover,
+select:hover,
+textarea:hover {
+  border-block-start: 2px solid var(--colorHover);
+  border-inline-start: 2px solid var(--colorHover);
+}
+
+input:not([type="color"]):not([type="file"]):active,
+select:active,
+textarea:active {
+  border-block-start: 2px solid var(--colorActive);
+  border-inline-start: 2px solid var(--colorActive);
+}
+
+input:not([type="color"]):not([type="file"]):focus,
+select:focus,
+textarea:focus {
+  border-block-start: 2px solid var(--colorFocus);
+  border-inline-start: 2px solid var(--colorFocus);
+}
+
+textarea {
+  height: calc(3px + (var(--inputPadding) * 2) + 5.4em);
+}
+
+textarea.row {
+  min-width: var(--inputRowMinWidth);
+  width: 100%;
+}
+
+fieldset.head {
+  border: 0;
+}
+
+fieldset.head > div {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: var(--fieldPadding);
+  /* blink
+  row-gap: var(--fieldPadding); */
+}
+
+fieldset.head > div > :not(:first-child) {
+  /* blink */
+  margin-block-start: var(--fieldPadding);
+}
+
+fieldset.head > legend {
+  padding: 0;
+  width: 100%;
+}
+
+fieldset.head > legend > div,
+.fieldset > div:first-child {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+fieldset.head > legend > div,
+fieldset.collapsible > legend > div.button {
+  border-block-end: 2px solid var(--colorBackground);
+  border-block-start: 2px solid #bfbfbf;
+  border-inline-end: 2px solid var(--colorBackground);
+  border-inline-start: 2px solid #bfbfbf;
+  padding: var(--fieldPadding);
+  /* blink
+  column-gap: var(--fieldPadding); */
+}
+
+fieldset.head > legend > div {
+  background: var(--colorBackgroundDent);
+}
+
+fieldset.head > legend > div > :not(:first-child) {
+  /* blink */
+  margin-inline-start: var(--fieldPadding);
+}
+
+fieldset.head > legend > div > label,
+.fieldset > div:first-child > label {
+  align-self: flex-end;
+  flex: auto;
+}
+
+fieldset.collapsible > legend > div > .status::before {
+  content: "▼";
+}
+
+fieldset.collapsible.collapsed > div {
+  display: none;
+}
+
+fieldset.collapsible > legend > div:hover > .status::before,
+fieldset.collapsible.collapsed > legend > div:hover > .status::before {
+  color: var(--colorHover);
+}
+
+fieldset.collapsible > legend > div:active > .status::before,
+fieldset.collapsible.collapsed > legend > div:active > .status::before {
+  color: var(--colorActive);
+}
+
+fieldset.collapsible.collapsed > legend > div > .status::before {
+  content: "▶";
+}
+
+legend,
+.fieldset > div:first-child > label {
+  font-weight: bold;
+}
+
+select[multiple] > option {
+  font-size: 0.9em;
+  padding: calc(2px + var(--inputPadding));
+}
+
+select[multiple] > option:hover {
+  background-color: var(--colorBackgroundHover);
+}
+
+.container {
+  background-color: var(--colorBackground);
+  display: grid;
+  grid: 100% / 100%;
+}
+
+.container.base {
+  grid: calc(3px + (var(--inputPadding) * 2) + var(--lineHeight)) auto var(--lineHeight) / 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.container.head,
+.container.foot {
+  border: 1px solid #7f7f7f;
+}
+
+.container.head {
+  grid: 100% / 100%;
+}
+
+.container.body {
+  grid: 100% / minmax(10em, 15em) minmax(30%, auto)
+      minmax(calc((var(--fieldPadding) * 3) + (var(--inputPadding) * 2) +
+      var(--fieldLabelWidth) + var(--inputRowMinWidth)), 25em);
+  overflow-y: hidden;
+}
+
+.container.body > .container {
+  border-left: 1px solid #7f7f7f;
+}
+
+.panel {
+  display: grid;
+}
+
+.panel.column {
+  grid: auto-flow / 100%;
+}
+
+.panel.column.dual {
+  grid-template-rows: 50% 50%;
+}
+
+.panel.column.form {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-y: scroll;
+  padding: 1px;
+  /* blink
+  row-gap: var(--fieldPadding); */
+}
+
+.panel.column.form > :not(:first-child) {
+  /* blink */
+  margin-block-start: var(--fieldPadding);
+}
+
+.panel.field-column {
+  align-items: end;
+  gap: var(--fieldPadding);
+  padding-block-end: var(--fieldPadding);
+}
+
+.panel.field-column > label {
+  border-block-start: 2px solid #3f3f3f3f;
+  min-width: var(--fieldLabelWidth);
+  overflow-wrap: break-word;
+  padding-block-start: var(--inputPadding);
+  text-align: start;
+}
+
+.panel.field-column.dual {
+  grid-template-columns: 1fr 1fr;
+}
+
+.panel.field-column.long-short {
+  grid-template-columns: auto var(--inputShortMinWidth);
+}
+
+.panel.field-column.short-long {
+  grid-template-columns: var(--inputShortMinWidth) auto;
+}
+
+.panel.field-column.dual > label,
+.panel.field-column.long-short > label,
+.panel.field-column.short-long > label {
+  grid-column: 1 / 3;
+}
+
+.panel.row {
+  grid: 100% / auto-flow;
+}
+
+.field {
+  display: flex;
+}
+
+.field.column {
+  align-items: start;
+  flex-flow: column nowrap;
+  /* blink
+  row-gap: var(--fieldPadding); */
+}
+
+.field.column > :not(:first-child) {
+  /* blink */
+  margin-block-start: var(--fieldPadding);
+}
+
+.field.column > label {
+  align-self: start;
+  border-inline-end: 1px solid #bfbfbf3f;
+  border-inline-start: 2px solid #3f3f3f3f;
+  min-width: 100%;
+  overflow-wrap: break-word;
+  padding-inline-end: var(--inputPadding);
+  padding-inline-start: var(--inputPadding);
+  text-align: start;
+}
+
+.field > textarea {
+  resize: vertical;
+}
+
+.field.column:hover > label {
+  border-inline-start: 2px solid var(--colorHover);
+}
+
+.field.column:focus-within > label {
+  border-inline-start: 2px solid var(--colorFocus);
+}
+
+.field.row {
+  align-items: start;
+  flex-flow: row nowrap;
+  /* blink
+  column-gap: var(--fieldPadding); */
+}
+
+.field.row > :not(:first-child) {
+  /* blink */
+  margin-inline-start: var(--fieldPadding);
+}
+
+.field.row > label {
+  border-block-end: 1px solid #bfbfbf3f;
+  border-block-start: 2px solid #3f3f3f3f;
+  min-width: var(--fieldLabelWidth);
+  overflow-wrap: break-word;
+  padding-block-end: var(--inputPadding);
+  padding-block-start: var(--inputPadding);
+  text-align: end;
+}
+
+.panel.field-column:hover > label,
+.field.row:hover > label {
+  border-block-start: 2px solid var(--colorHover);
+}
+
+.panel.field-column:focus-within > label,
+.field.row:focus-within > label {
+  border-block-start: 2px solid var(--colorFocus);
+}
+
+.field.row.half {
+  max-width: 50%;
+  padding-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+.field.button {
+  background: inherit;
+  border: 0;
+}
+
+.field.button > button {
+  flex: auto;
+}
+
+.field.checkbox > label,
+.field.radio > label {
+  text-align: start;
+}
+
+.field.checkbox.column,
+.field.radio.column {
+  align-self: stretch;
+}
+
+.field.checkbox.column > input,
+.field.radio.column > input {
+  margin-inline-start: calc(2px + var(--inputPadding));
+}
+
+.field.checkbox.row,
+.field.radio.row {
+  align-self: start;
+}
+
+.field.checkbox.row > input,
+.field.radio.row > input {
+  align-self: center;
+}
+
+.menu.root,
+.menu.branch,
+.menu.leaf {
+  display: flex;
+  min-width: max-content;
+}
+
+.menu.root:hover,
+.menu.branch:hover,
+.menu.leaf:hover {
+  background-color: var(--colorBackgroundHover);
+}
+
+.menu.root:focus-within > .menu.stem,
+.menu.branch:hover > .menu.stem,
+.menu.branch:focus-within > .menu.stem {
+  display: flex;
+}
+
+.menu.root:focus-within,
+.menu.branch:focus-within {
+  background-color: var(--colorFocus);
+}
+
+.menu.root {
+  flex-flow: column nowrap;
+  position: relative;
+}
+
+.menu.root > .menu.stem {
+  top: 100%;
+}
+
+.menu.branch,
+.menu.leaf {
+  flex-flow: row nowrap;
+}
+
+.menu.branch > .menu.stem {
+  left: 100%;
+}
+
+.menu.branch > .menu.field > .menu-field.mnemonic::after {
+  content: "►";
+}
+
+.rtl .menu.branch > .menu.stem {
+  left: unset;
+  right: 100%;
+}
+
+.rtl .menu.branch > .menu.field > .menu-field.mnemonic::after {
+  content: "◄";
+}
+
+.menu.leaf:active {
+  background-color: var(--colorActive);
+}
+
+.menu.stem {
+  background: var(--colorBackgroundDent);
+  border-block-end: 2px solid #3f3f3f;
+  border-block-start: 2px solid #fff;
+  border-inline-end: 2px solid #3f3f3f;
+  border-inline-start: 2px solid #fff;
+  flex-flow: column nowrap;
+  position: absolute;
+  width: max-content;
+  z-index: 1;
+}
+
+.menu.stem > label {
+  font-size: smaller;
+  font-weight: bold;
+  padding: var(--inputPadding);
+}
+
+
+.menu.field {
+  flex: auto;
+  flex-flow: row nowrap;
+  padding: var(--fieldPadding);
+  /* blink
+  column-gap: var(--fieldPadding); */
+}
+
+.menu.field > :not(:first-child) {
+  /* blink */
+  margin-inline-start: var(--fieldPadding);
+}
+
+.menu-field.icon {
+  text-align: center;
+  width: 1em;
+  /* blink */
+  max-height: 1em;
+}
+
+.menu-field.label {
+  flex: auto;
+  padding-inline-end: 2em;
+  text-align: start;
+}
+
+.menu-field.mnemonic {
+  color: #7f7f7f;
+  flex: auto;
+  padding-inline-end: 0;
+  text-align: end;
+}
+
+.menu.soil {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.status.bar {
+  display: flex;
+  flex-flow: row nowrap;
+  padding-block-end: 2px;
+  padding-block-start: 2px;
+  padding-inline-end: var(--fieldPadding);
+  padding-inline-start: var(--fieldPadding);
+  /* blink
+  column-gap: var(--fieldPadding); */
+}
+
+.status.bar > :not(:first-child) {
+  /* blink */
+  margin-inline-start: var(--fieldPadding);
+}
+
+.status.bar > .application-message {
+  flex: 1 0 auto;
+}
